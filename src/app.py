@@ -1,5 +1,7 @@
 import datetime
+import requests
 
+from pathlib import Path
 
 TIME_STR_FORMAT = '%Y-%m-%d %H:%M'
 
@@ -12,8 +14,21 @@ def print_time():
 
     print(f'now_str: {now_str}, now_utc_str: {now_utc_str }')
 
+def get_photo():
+    directory = 'data'
+    url ='https://en.wikipedia.org/wiki/Eduardo_Galeano'
+    print(f'Request url {url}')
+    r = requests.get(url)
+
+    p = Path(directory)
+    p.mkdir(exist_ok=True)
+    
+    with open(f'{directory}/file.html', 'w') as file:
+        file.write(r.text)
+
 def main():
     print_time()
 
 if __name__ == '__main__':
     main()
+    get_photo()

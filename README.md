@@ -28,8 +28,12 @@ python3 src/app.py
 docker build -t my_python_app .
 ```
 ```shell
-docker run my_python_app
+docker run --rm my_python_app
 ```
 ```shell
-docker run -it my_python_app bash
+docker run --rm -it my_python_app bash
+```
+```shell
+docker run --rm -v "$(pwd)"/data:/code/data my_python_app
+docker run --rm -it -v "$(pwd)"/data:/code/data my_python_app bash
 ```
