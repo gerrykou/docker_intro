@@ -14,7 +14,7 @@ def print_time():
 
     print(f'now_str: {now_str}, now_utc_str: {now_utc_str }')
 
-def get_photo():
+def get_html():
     directory = 'data'
     url ='https://en.wikipedia.org/wiki/Eduardo_Galeano'
     print(f'Request url {url}')
@@ -31,4 +31,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-    get_photo()
+    get_html()
