@@ -1,8 +1,7 @@
 version: "3.9"
 services:
   my_python_app:
-    container_name: "my_python_app_dc"
-    image: "my_python_app:latest"
+    container_name: my_python_app_dc
     build: .
     volumes:
-      - "./data:/code/data"
+      - ./data:/code/data
