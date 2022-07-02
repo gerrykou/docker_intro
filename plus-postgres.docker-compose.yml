@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  my_python_app_dc:
+    container_name: my_python_app_dc
+    build:
+      context: .
+      dockerfile: plus-postgres.Dockerfile
+    restart: on-failure:3
+    depends_on:
+      - "pgdatabase"
+    volumes:
+      - ./data:/code/data
+    # environment: 
+    #   - POSTGRES_HOST=pgdatabase
+    env_file:
+      - .env
+  pgdatabase:
+    image: postgres
+    # environment:
+    #   - POSTGRES_USER=postgres
+    #   - POSTGRES_PASSWORD=my_pass
+    #   - POSTGRES_DB=my_pg_database
+    volumes:
+      - "./data/postgres_data:/var/lib/postgresql/data:rw"
+    ports:
+      - "5432:5432"

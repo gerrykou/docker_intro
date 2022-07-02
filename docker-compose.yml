@@ -3,24 +3,5 @@ services:
   my_python_app:
     container_name: my_python_app_dc
     build: .
-    # depends_on:
-    #   - "pgdatabase"
     volumes:
       - ./data:/code/data
-  pgdatabase:
-    image: postgres
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=my_pass
-      - POSTGRES_DB=my_pg_database
-    volumes:
-      - "./data/postgres_data:/var/lib/postgresql/data:rw"
-    ports:
-      - "5432:5432"
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
-      - PGADMIN_DEFAULT_PASSWORD=mypgadminpass
-    ports:
-      - "8080:80"
