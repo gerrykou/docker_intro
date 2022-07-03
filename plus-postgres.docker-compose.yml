@@ -5,7 +5,10 @@ services:
     build:
       context: .
       dockerfile: plus-postgres.Dockerfile
-    restart: on-failure:3
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
     depends_on:
       - "pgdatabase"
     volumes:
@@ -20,6 +23,8 @@ services:
     #   - POSTGRES_USER=postgres
     #   - POSTGRES_PASSWORD=my_pass
     #   - POSTGRES_DB=my_pg_database
+    env_file:
+      - .env
     volumes:
       - "./data/postgres_data:/var/lib/postgresql/data:rw"
     ports:
