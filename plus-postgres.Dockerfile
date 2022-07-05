@@ -2,9 +2,9 @@ FROM python:3.10.4-slim-bullseye
 
 WORKDIR /code
 
-COPY requirements.txt .
+COPY postgres-requirements.txt .
 
-RUN pip install -r requirements.txt
+RUN pip install -r postgres-requirements.txt
 
 COPY src src
 
